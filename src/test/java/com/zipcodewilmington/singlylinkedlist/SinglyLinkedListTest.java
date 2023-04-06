@@ -94,7 +94,6 @@ public class SinglyLinkedListTest {
         //Then
         Assert.assertEquals(expected, actual);
     }
-
     @Test
     public void testGet() {
         //Given

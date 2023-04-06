@@ -29,12 +29,35 @@ public class SinglyLinkedList<T extends Comparable<T>> {
     }
 
 
-    public void remove(T expected) {
+    public void remove(T val) {
+        Node<T> current = head;
+        Node<T> temp = current;
+            do{
+            int counter = 1;
+            if(current.getData().equals(val) && (counter == 1)){
+                current.setData(null);
+                current.setNext(null);
+                if(temp.getNext() == null){
+                    break;
+                }
+                current = current.getNext();
+                temp = current;
+            }else if(current.getData().equals(val)){
+                temp.setData(current.getData());
+                temp.setNext(current.getNext());
+                current.setData(null);
+                current.setNext(null);
+                current = temp.next;
+
+            }
+            current = current.getNext();
+        }while(current.getNext() != null);
     }
 
     public int size() {
         Node<T> current = head;
         int count = 1;
+
         while(current.getNext() != null){
             count++;
             current = current.getNext();
