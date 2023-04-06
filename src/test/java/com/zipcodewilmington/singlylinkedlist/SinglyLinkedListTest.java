@@ -49,7 +49,7 @@ public class SinglyLinkedListTest {
         list.add(expected);
 
         //Then
-        Assert.assertTrue(list.size() > 0);
+        Assert.assertTrue(list.contains(expected));
     }
 
     @Test
@@ -105,7 +105,7 @@ public class SinglyLinkedListTest {
         list.add("Batman");
 
         //When
-        String actual = list.get(2).data;
+        String actual = list.get(2);
 
         //Then
         Assert.assertEquals(expected, actual);
@@ -119,12 +119,12 @@ public class SinglyLinkedListTest {
         list.add("Ironman");
 
         //When
-        SinglyLinkedList<String> newList = list.copy;
+        SinglyLinkedList<String> newList = list.copy();
 
         //Then
         Assert.assertNotEquals(list.toString(), newList.toString());
         for(int i = 0; i < list.size(); i++){
-            Assert.assertEquals(list.get(i).data, newList.get(i).data);
+            Assert.assertEquals(list.get(i), newList.get(i));
         }
     }
 
@@ -132,16 +132,20 @@ public class SinglyLinkedListTest {
     public void testSort() {
         //Given
         list.add("Mordekaiser");
-        list.add("Asol");
         list.add("Olaf");
+        list.add("Asol");
+        list.add("Bard");
+        list.add("Katarina");
 
+        //When
         list.sort();
 
-        Assert.assertEquals(list.get(0).data, "Asol");
-        Assert.assertEquals(list.get(1).data, "Mordekaiser");
-        Assert.assertEquals(list.get(2).data, "Olaf");
-
-
+        //Then
+        Assert.assertEquals(list.get(0), "Asol");
+        Assert.assertEquals(list.get(1), "Bard");
+        Assert.assertEquals(list.get(2), "Katarina");
+        Assert.assertEquals(list.get(3), "Mordekaiser");
+        Assert.assertEquals(list.get(4), "Olaf");
     }
 }
 
