@@ -58,6 +58,9 @@ public class SinglyLinkedList<T extends Comparable<T>> {
         Node<T> current = head;
         int count = 1;
 
+        if(head.getNext() == null){
+            return 0;
+        }
         while(current.getNext() != null){
             count++;
             current = current.getNext();
